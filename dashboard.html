@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<title>Dashboard</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			background: #f4f6f8;
+			color: #243447;
+		}
+
+		main {
+			max-width: 1000px;
+			margin: 0 auto;
+			padding: 2rem;
+		}
+
+		header {
+			margin-bottom: 2rem;
+		}
+
+		h1, h2 {
+			margin-top: 0;
+		}
+
+		.summary {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+			gap: 1rem;
+			margin-bottom: 2rem;
+		}
+
+		.card, section {
+			background: #fff;
+			border-radius: 8px;
+			padding: 1rem;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+		}
+
+		.card strong {
+			display: block;
+			font-size: 1.5rem;
+			margin-top: 0.5rem;
+		}
+
+		section {
+			margin-bottom: 1.5rem;
+			overflow-x: auto;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+		}
+
+		th, td {
+			border-bottom: 1px solid #e1e5e8;
+			padding: 0.75rem;
+			text-align: left;
+		}
+
+		th {
+			background: #f7f9fa;
+		}
+	</style>
+</head>
+<body>
+	<nav class="topnav">
+		<a class="nav-brand" href="index.html">Home</a>
+		<a class="active" href="dashboard.html">Dashboard</a>
+		<a href="blog.html">Blog</a>
+		<a href="why-it.html">Why did I choose IT?</a>
+		<a href="about.html">About</a>
+	</nav>
+	<main>
+		<header>
+			<h1>Grades Dashboard</h1>
+			<p>Track your marks and progress throughout the school year.</p>
+		</header>
+
+		<div class="summary">
+			<div class="card">School year<strong>2025–2026</strong></div>
+			<div class="card">Overall average<strong>--</strong></div>
+			<div class="card">Subjects<strong>--</strong></div>
+		</div>
+
+		<section>
+			<h2>Subject Grades</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Subject</th>
+						<th>Term 1</th>
+						<th>Term 2</th>
+						<th>Term 3</th>
+						<th>Final Grade</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Subject placeholder</td>
+						<td>--</td>
+						<td>--</td>
+						<td>--</td>
+						<td>--</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h2>Recent Marks</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>Subject</th>
+						<th>Assessment</th>
+						<th>Mark</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>YYYY-MM-DD</td>
+						<td>Subject placeholder</td>
+						<td>Assessment placeholder</td>
+						<td>-- / --</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</main>
+</body>
+</html>
