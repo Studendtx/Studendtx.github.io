@@ -5,71 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="style.css">
 	<title>Dashboard</title>
-	<style>
-		body {
-			font-family: Arial, sans-serif;
-			margin: 0;
-			padding: 0;
-			background: #f4f6f8;
-			color: #243447;
-		}
 
-		main {
-			max-width: 1000px;
-			margin: 0 auto;
-			padding: 2rem;
-		}
-
-		header {
-			margin-bottom: 2rem;
-		}
-
-		h1, h2 {
-			margin-top: 0;
-		}
-
-		.summary {
-			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-			gap: 1rem;
-			margin-bottom: 2rem;
-		}
-
-		.card, section {
-			background: #fff;
-			border-radius: 8px;
-			padding: 1rem;
-			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-		}
-
-		.card strong {
-			display: block;
-			font-size: 1.5rem;
-			margin-top: 0.5rem;
-		}
-
-		section {
-			margin-bottom: 1.5rem;
-			overflow-x: auto;
-		}
-
-		table {
-			width: 100%;
-			border-collapse: collapse;
-		}
-
-		th, td {
-			border-bottom: 1px solid #e1e5e8;
-			padding: 0.75rem;
-			text-align: left;
-		}
-
-		th {
-			background: #f7f9fa;
-		}
-	</style>
 </head>
-<body>
+<body class="dashboard">
 	<nav class="topnav">
 		<a class="nav-brand" href="index.html">Home</a>
 		<a class="active" href="dashboard.html">Dashboard</a>
@@ -90,33 +28,74 @@
 		</div>
 
 		<section>
-			<h2>Subject Grades</h2>
+			<h2>Course Grades</h2>
 			<table>
 				<thead>
 					<tr>
-						<th>Subject</th>
-						<th>Term 1</th>
-						<th>Term 2</th>
-						<th>Term 3</th>
-						<th>Final Grade</th>
+						<th>Quarter</th>
+						<th>Course</th>
+						<th>EC</th>
+						<th>Grade</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td>Subject placeholder</td>
+						<td class="quarter" rowspan="3">Q1</td>
+						<td>Programme &amp; Career Orientation</td>
 						<td>--</td>
-						<td>--</td>
-						<td>--</td>
-						<td>--</td>
+						<td class="grade">--</td>
 					</tr>
 					<tr>
-						<td>Subject placeholder2</td>
+						<td>Programming Basics</td>
 						<td>--</td>
+						<td class="grade">--</td>
+					</tr>
+					<tr>
+						<td>Computer Science</td>
 						<td>--</td>
+						<td class="grade">--</td>
+					</tr>
+					<tr>
+						<td class="quarter" rowspan="2">Q2</td>
+						<td>Course placeholder</td>
 						<td>--</td>
+						<td class="grade">--</td>
+					</tr>
+					<tr>
+						<td>Course placeholder</td>
 						<td>--</td>
+						<td class="grade">--</td>
+					</tr>
+					<tr>
+						<td class="quarter" rowspan="2">Q3</td>
+						<td>Course placeholder</td>
+						<td>--</td>
+						<td class="grade">--</td>
+					</tr>
+					<tr>
+						<td>Course placeholder</td>
+						<td>--</td>
+						<td class="grade">--</td>
+					</tr>
+					<tr>
+						<td class="quarter" rowspan="2">Q4</td>
+						<td>Course placeholder</td>
+						<td>--</td>
+						<td class="grade">--</td>
+					</tr>
+					<tr>
+						<td>Course placeholder</td>
+						<td>--</td>
+						<td class="grade">--</td>
 					</tr>
 				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="2">Total</td>
+						<td>-- / 60</td>
+						<td></td>
+					</tr>
+				</tfoot>
 			</table>
 		</section>
 

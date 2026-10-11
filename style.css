@@ -126,3 +126,87 @@ body {
     width: 100%;
   }
 }
+
+/* --- Dashboard Page --- */
+body.dashboard {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  color: #243447;
+}
+
+.dashboard main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.dashboard header {
+  margin-bottom: 2rem;
+}
+
+.dashboard h1,
+.dashboard h2 {
+  margin-top: 0;
+}
+
+.dashboard .summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.dashboard .card,
+.dashboard section {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard .card strong {
+  display: block;
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.dashboard section {
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+}
+
+.dashboard table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dashboard th,
+.dashboard td {
+  border-bottom: 1px solid #e1e5e8;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.dashboard th {
+  background: #f7f9fa;
+}
+
+.dashboard .quarter {
+  background: #f7f9fa;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+  border-right: 1px solid #e1e5e8;
+  width: 80px;
+}
+
+.dashboard .grade {
+  font-weight: bold;
+  width: 80px;
+}
+
+.dashboard tfoot td {
+  font-weight: bold;
+  border-top: 2px solid #243447;
+  border-bottom: none;
+}
