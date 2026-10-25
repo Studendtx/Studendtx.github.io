@@ -279,6 +279,16 @@ figure {
   transform: rotate(-1.2deg);
 }
 
+summary {
+  cursor: pointer;
+}
+
+details audio {
+  display: block;
+  margin-top: 0.5rem;
+  max-width: 100%;
+}
+
 figcaption {
   font-family: var(--font-mono);
   font-size: 0.8rem;
