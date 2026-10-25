@@ -130,6 +130,12 @@ a:focus-visible {
   font-size: 1.5rem;
 }
 
+.content h3 {
+  margin: 1.5rem 0 0.4rem;
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
 .content p,
 .content ul,
 .content ol,
