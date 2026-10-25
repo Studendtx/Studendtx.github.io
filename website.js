@@ -1,5 +1,6 @@
-// Study monitor: updates row colours, credits, average and the progress bar
-// whenever a grade is entered on the dashboard.
+// Study monitor: reads the grades typed in dashboard.html and sets
+// the row colours, credits, average and the progress bar.
+// To add a grade, write it in the empty grade cell, e.g. <td class="grade">7.5</td>
 const PASSING_GRADE = 5.5;
 const TOTAL_EC = 60;
 
@@ -10,14 +11,14 @@ function updateStudyMonitor() {
 	let gradeCount = 0;
 
 	rows.forEach(function (row) {
-		const input = row.querySelector('.grade-input');
+		const gradeCell = row.querySelector('.grade');
 		const ecCell = row.querySelector('.ec');
-		if (!input || !ecCell) {
+		if (!gradeCell || !ecCell) {
 			return;
 		}
 
 		const ec = parseFloat(ecCell.textContent) || 0;
-		const grade = parseFloat(input.value);
+		const grade = parseFloat(gradeCell.textContent.replace(',', '.'));
 
 		row.classList.remove('passed', 'failed', 'pending');
 		if (isNaN(grade)) {
@@ -45,8 +46,5 @@ function updateStudyMonitor() {
 }
 
 if (document.getElementById('progress')) {
-	document.querySelectorAll('.grade-input').forEach(function (input) {
-		input.addEventListener('input', updateStudyMonitor);
-	});
 	updateStudyMonitor();
 }
