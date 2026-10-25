@@ -1,105 +1,410 @@
+/* Theme: physical media. The site looks like a record shop:
+   the nav is a tracklist, blog posts are CD cases, the home photo is an album cover. */
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=IBM+Plex+Mono:wght@400;600&display=swap');
+
+/* --- Colours and fonts (change these to re-theme the whole site) --- */
+:root {
+  --paper: #f3eee3;       /* liner-note paper */
+  --paper-dark: #e7dfcc;
+  --card: #fbf8f1;
+  --ink: #1d1b18;
+  --ink-soft: #625b4f;
+  --line: #d3c9b4;
+  --vinyl: #161514;
+  --label: #c23a22;       /* record label red */
+  --mustard: #e3a72f;
+  --font-text: 'Archivo', 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', Consolas, monospace;
+}
+
 /* --- Global Styles & Reset --- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-  background-color: #f8f9fa;
-  color: #333;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-text);
   line-height: 1.6;
 }
 
-.welcome {
-  max-width: 650px;
-  margin: 6rem auto;
-  padding: 0 2rem;
-  text-align: center;
+h1,
+h2 {
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
-.welcome h1 {
-  margin-bottom: 1rem;
+h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
 }
 
-.welcome p {
-  margin-bottom: 1.5rem;
+a {
+  color: var(--label);
 }
 
-.welcome-link {
-  display: inline-block;
-  padding: 0.7rem 1rem;
-  background-color: #4b4b4b;
-  color: #ffffff;
-  text-decoration: none;
-  border-radius: 4px;
+a:focus-visible {
+  outline: 3px solid var(--mustard);
+  outline-offset: 2px;
 }
 
-.welcome-link:hover {
-  background-color: #090909;
-}
-
-/* --- Navigation Bar --- */
+/* --- Navigation Bar: a tracklist (A1, A2, ...) --- */
 .topnav {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  background-color: #000000;
-  padding: 1rem 2rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  gap: 0.25rem;
+  background-color: var(--vinyl);
+  padding: 0.9rem 2rem;
+  counter-reset: track;
 }
 
 .topnav > a {
-  color: #ffffff;
+  color: var(--paper);
   text-decoration: none;
-  padding: 0.5rem 0.8rem;
+  padding: 0.45rem 0.8rem;
   border-radius: 4px;
+}
+
+/* every link except Home gets a track number */
+.topnav > a:not(.nav-brand)::before {
+  counter-increment: track;
+  content: "A" counter(track) " ";
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+  color: var(--mustard);
 }
 
 .topnav > a:hover,
 .topnav > a.active {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: var(--paper);
+  color: var(--vinyl);
+}
+
+.topnav > a:hover::before,
+.topnav > a.active::before {
+  color: var(--label);
 }
 
 .nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   margin-right: auto;
-  color: #ffffff;
-  font-size: 1.5rem;
-  font-weight: 700;
-  text-decoration: none;
+  font-size: 1.4rem;
+  font-weight: 800;
 }
 
-/* --- Responsive Design (Mobile View) --- */
-@media (max-width: 768px) {
-  .topnav {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem;
-  }
+/* a small record in front of "Home" */
+.nav-brand::before {
+  content: "";
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--paper) 0 8%, var(--label) 10% 34%, #2b2927 36% 100%);
+}
+
+/* --- Page Layout (content + external menu) --- */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+/* lets wide tables scroll inside their box instead of widening the page */
+.layout > * {
+  min-width: 0;
+}
+
+.content h1 {
+  margin-bottom: 1rem;
+}
+
+.content h2 {
+  margin: 2rem 0 0.5rem;
+  font-size: 1.5rem;
+}
+
+.content p,
+.content ul,
+.content ol,
+.content table {
+  margin-bottom: 1rem;
+  max-width: 68ch;
+}
+
+.content ul,
+.content ol {
+  padding-left: 1.5rem;
+}
+
+.content li::marker {
+  color: var(--label);
+}
+
+.content img {
+  max-width: 100%;
+}
+
+/* draft text that still has to be (re)written */
+.todo {
+  background-color: #fbefc9;
+  border: 1px dashed var(--mustard);
+  border-radius: 4px;
+  padding: 0.4rem 0.6rem;
+}
+
+.todo::before {
+  content: "Demo take: ";
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+  font-weight: 600;
+  color: #8a5d00;
+}
+
+ul.todo {
+  padding-left: 2rem;
+}
+
+/* Index: the photo is an album cover with a record sliding out */
+.welcome .record {
+  position: relative;
+  width: min(70%, 400px);
+  aspect-ratio: 1;
+  margin-bottom: 2.5rem;
+}
+
+.welcome .record img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.3);
+}
+
+.welcome .record::before {
+  content: "";
+  position: absolute;
+  inset: 4%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, var(--paper) 0 2%, var(--label) 2.5% 30%, transparent 30.5%),
+    conic-gradient(from 40deg, transparent 0 8%, rgba(255, 255, 255, 0.14) 12%, transparent 18% 58%, rgba(255, 255, 255, 0.1) 62%, transparent 68%),
+    repeating-radial-gradient(circle, #1b1a19 0 2px, #262422 2px 3px);
+  transform: translateX(15%);
+  transition: transform 0.7s ease;
+}
+
+.welcome .record:hover::before {
+  transform: translateX(40%) rotate(160deg);
+}
+
+.welcome-link {
+  display: inline-block;
+  padding: 0.7rem 1.1rem;
+  background-color: var(--label);
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.welcome-link::before {
+  content: "\25B6  "; /* play button */
+}
+
+.welcome-link:hover {
+  background-color: var(--vinyl);
+}
+
+.hz-logo {
+  display: block;
+  width: 140px;
+  margin-top: 3rem;
+}
+
+/* External Menu: the liner-note credits */
+.external {
+  background-color: var(--paper-dark);
+  border-top: 6px solid var(--vinyl);
+  padding: 1.1rem 1rem;
+  align-self: start;
+  position: sticky;
+  top: 1rem;
+}
+
+.external h2 {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 0.5rem;
+}
+
+.external ul {
+  list-style: none;
+}
+
+.external li + li {
+  border-top: 1px dashed var(--line);
+}
+
+.external a {
+  display: block;
+  color: var(--ink);
+  font-size: 0.95rem;
+  text-decoration: none;
+  padding: 0.45rem 0.4rem;
+}
+
+.external a:hover {
+  background-color: var(--vinyl);
+  color: var(--paper);
+}
+
+/* About: the photo is an insert from the CD booklet */
+figure {
+  background-color: #ffffff;
+  padding: 0.7rem 0.7rem 1rem;
+  margin: 1rem 0 2rem;
+  max-width: 560px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform: rotate(-1.2deg);
+}
+
+figcaption {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  margin-top: 0.6rem;
+}
+
+/* Blog: every post is a CD case */
+.cases {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  counter-reset: post;
+}
+
+.post-excerpt {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--card);
+  border: 1px solid var(--line);
+  border-left: 12px solid var(--vinyl); /* the hinge of the case */
+  border-radius: 4px;
+  padding: 1.2rem 1.2rem 1.4rem;
+  counter-increment: post;
+}
+
+.post-excerpt > * {
+  position: relative;
+  z-index: 1;
+  max-width: 78%;
+}
+
+.post-excerpt::before {
+  content: "TRACK " counter(post, decimal-leading-zero);
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--label);
+  margin-bottom: 0.4rem;
+}
+
+/* the disc */
+.post-excerpt::after {
+  content: "";
+  position: absolute;
+  right: -4.5rem;
+  top: 50%;
+  width: 9rem;
+  height: 9rem;
+  margin-top: -4.5rem;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, var(--card) 0 9%, #c9c2b3 10% 13%, transparent 14%),
+    conic-gradient(#d9d4ca, #f4f1ea, #b9c4cf, #efe7d6, #cfc9d8, #d9d4ca);
+  transition: transform 0.6s ease;
+}
+
+.post-excerpt:hover::after {
+  transform: translateX(-1.5rem) rotate(120deg);
+}
+
+.post-excerpt h2 {
+  margin: 0 0 0.3rem;
+  font-size: 1.25rem;
+}
+
+.post-date {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.read-more {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--label);
+}
+
+.read-more::before {
+  content: "\25B6  "; /* play */
+}
+
+a.read-more[href="blog.html"]::before {
+  content: "\25C0\25C0  "; /* rewind, for "Back to the blog" */
+}
+
+.swot {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.swot th,
+.swot td {
+  border: 1px solid var(--line);
+  padding: 0.75rem;
+  vertical-align: top;
+  width: 50%;
+}
+
+.swot th {
+  background-color: var(--vinyl);
+  color: var(--mustard);
+  font-family: var(--font-mono);
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 /* --- Dashboard Page --- */
-body.dashboard {
-  font-family: Arial, sans-serif;
-  background: #f4f6f8;
-  color: #243447;
-}
-
 .dashboard main {
   max-width: 1000px;
-  margin: 0 auto;
-  padding: 0;
 }
 
 .dashboard header {
   margin-bottom: 2rem;
 }
 
-.dashboard h1,
+.dashboard header h1 {
+  margin-bottom: 0.5rem;
+}
+
 .dashboard h2 {
-  margin-top: 0;
+  margin: 0 0 0.75rem;
 }
 
 .dashboard .summary {
@@ -111,16 +416,29 @@ body.dashboard {
 
 .dashboard .card,
 .dashboard section {
-  background: #fff;
-  border-radius: 8px;
-  padding: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 1.2rem;
+}
+
+/* summary cards */
+.dashboard .card {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  border-top: 6px solid var(--mustard);
 }
 
 .dashboard .card strong {
   display: block;
-  font-size: 1.5rem;
-  margin-top: 0.5rem;
+  font-family: var(--font-text);
+  font-size: 1.8rem;
+  letter-spacing: 0;
+  color: var(--ink);
+  margin-top: 0.3rem;
 }
 
 .dashboard section {
@@ -135,215 +453,123 @@ body.dashboard {
 
 .dashboard th,
 .dashboard td {
-  border-bottom: 1px solid #e1e5e8;
-  padding: 0.75rem;
+  border-bottom: 1px dashed var(--line);
+  padding: 0.7rem;
   text-align: left;
 }
 
 .dashboard th {
-  background: #f7f9fa;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  border-bottom: 2px solid var(--ink);
 }
 
 .dashboard .quarter {
-  background: #f7f9fa;
-  font-weight: bold;
+  font-family: var(--font-mono);
+  font-weight: 600;
   text-align: center;
   vertical-align: middle;
-  border-right: 1px solid #e1e5e8;
+  border-right: 1px dashed var(--line);
   width: 80px;
 }
 
 .dashboard .grade {
-  font-weight: bold;
+  font-weight: 800;
   width: 80px;
 }
 
 .dashboard tfoot td {
-  font-weight: bold;
-  border-top: 2px solid #243447;
+  font-weight: 800;
+  border-top: 2px solid var(--ink);
   border-bottom: none;
 }
 
-/* --- Page Layout (content + external menu) --- */
-.layout {
-  display: grid;
-  grid-template-columns: 1fr 240px;
-  gap: 2rem;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.content h1 {
-  margin-bottom: 1rem;
-}
-
-.content h2 {
-  margin: 1.5rem 0 0.5rem;
-}
-
-.content p,
-.content ul,
-.content ol,
-.content table {
-  margin-bottom: 1rem;
-}
-
-.content ul,
-.content ol {
-  padding-left: 1.5rem;
-}
-
-.content img {
-  max-width: 100%;
-}
-
-.todo {
-  color: #8a6d00;
-  background-color: #fff8e1;
-  border-left: 4px solid #f0b400;
-  padding: 0.25rem 0.5rem;
-}
-
-/* --- External Menu --- */
-.external {
-  background-color: #ffffff;
-  border-radius: 8px;
-  padding: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  align-self: start;
-  position: sticky;
-  top: 1rem;
-}
-
-.external h2 {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-}
-
-.external ul {
-  list-style: none;
-}
-
-.external a {
-  display: block;
-  color: #000000;
-  text-decoration: none;
-  padding: 0.4rem 0.5rem;
-  border-radius: 4px;
-}
-
-.external a:hover {
-  background-color: #000000;
-  color: #ffffff;
-}
-
-.hz-logo {
-  display: block;
-  width: 160px;
-  margin: 2rem auto 0;
-}
-
-/* --- Blog --- */
-.post-excerpt {
-  background-color: #ffffff;
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-.post-excerpt h2 {
-  margin-top: 0;
-}
-
-.post-date {
-  color: #6b7280;
-  font-size: 0.9rem;
-}
-
-.read-more {
-  color: #388e3c;
-  font-weight: 600;
-}
-
-.swot {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.swot th,
-.swot td {
-  border: 1px solid #e1e5e8;
-  padding: 0.75rem;
-  vertical-align: top;
-  width: 50%;
-}
-
-/* --- Study Monitor --- */
+/* Study Monitor */
 .dashboard .passed {
-  background-color: #e8f5e9;
+  background-color: #e2eed8;
 }
 
 .dashboard .failed {
-  background-color: #ffebee;
+  background-color: #f6dbd3;
 }
 
 .dashboard .pending {
-  color: #6b7280;
+  color: var(--ink-soft);
 }
 
 .legend {
   display: flex;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 0.6rem;
   margin-bottom: 1rem;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .legend span {
   padding: 0.2rem 0.6rem;
   border-radius: 4px;
-  border: 1px solid #e1e5e8;
+  border: 1px solid var(--line);
 }
 
+/* the progress bar is a playback bar */
 .progress {
   position: relative;
-  height: 28px;
-  background-color: #e1e5e8;
-  border-radius: 4px;
-  margin: 1rem 0 2rem;
+  height: 14px;
+  background-color: var(--paper-dark);
+  border-radius: 7px;
+  margin: 1.5rem 0 2.5rem;
 }
 
 .progress-bar {
   height: 100%;
   width: calc(var(--earned) / 60 * 100%);
-  background-color: #4caf50;
-  border-radius: 4px;
+  background-color: #3f7d4f;
+  border-radius: 7px;
 }
 
 .progress-boundary {
   position: absolute;
-  top: -6px;
-  bottom: -6px;
+  top: -8px;
+  bottom: -8px;
   left: 75%;
-  border-left: 3px dashed #ef4444;
+  border-left: 3px dashed var(--label);
 }
 
 .progress-boundary span {
   position: absolute;
   top: 100%;
-  left: 0.3rem;
+  right: 0.3rem;
   white-space: nowrap;
-  font-size: 0.8rem;
-  color: #ef4444;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--label);
 }
 
+/* Responsive Design (Mobile View) */
 @media (max-width: 768px) {
+  .topnav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
   .layout {
     grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem 1rem;
+  }
+
+  .external {
+    position: static;
   }
 }
 
-.progress-bar {
-  transition: width 0.3s ease;
+/* no spinning records for people who turned animations off */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
 }

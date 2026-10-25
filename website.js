@@ -1,5 +1,4 @@
-// Study monitor: reads the grades typed in dashboard.html and sets
-// the row colours, credits, average and the progress bar.
+// Study monitor: reads the grades typed in dashboard.html and sets the row colours, credits, average and the progress bar. 
 // To add a grade, write it in the empty grade cell, e.g. <td class="grade">7.5</td>
 const PASSING_GRADE = 5.5;
 const TOTAL_EC = 60;
