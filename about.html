@@ -4,63 +4,121 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Who is Xander? Background, hobbies and interests of a first-year HZ HBO ICT student.">
+	<title>About · Xander Schroevers</title>
+	<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%23161514'/><circle cx='16' cy='16' r='6' fill='%23c23a22'/></svg>">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;600&display=swap">
+	<link rel="stylesheet" href="scrollcraft.css">
 	<link rel="stylesheet" href="style.css">
-	<title>About</title>
 </head>
 <body>
-	<nav class="topnav">
-		<a class="nav-brand" href="index.html">Home</a>
-		<a href="dashboard.html">Dashboard</a>
-		<a href="blog.html">Blog</a>
-		<a href="why-it.html">Why did I choose ICT?</a>
-		<a class="active" href="about.html">About</a>
-	</nav>
-	<div class="layout">
-		<main class="content">
-			<h1>Who am I?</h1>
-			<figure>
-				<img src="img/summer-job.jpg" alt="Photo of Xander and a friend during their summer job">
-				<figcaption>Me (Left) and my friend (Right) at our summer job (picture was taken by management for the company website).</figcaption>
-			</figure>
-			<h2>About me</h2>
-			<p>I am a 19-year-old guy from Arnemuiden. I've always had an affinity for technology, starting with iPads, tablets and drones when I was about 9. Since my mom didn't want to buy Minecraft Pocket Edition for me, I had to find a different way to obtain the game. This led me down a rabbit hole of APK's, questionable websites, and a lot of viruses. I persisted, and managed to install the game for free. I definitely gave my tablet AT LEAST 2 viruses, but to younger me, that was not as important as Minecraft.</p>
-			<h2>Hobbies</h2>
-			<ul>
-				<li>Watching movies or youtube</li>
-				<li><a href="img/diving.jpg" target="_blank" rel="noopener">Scuba Diving</a></li>
-				<li>Playing the electrical and classical guitar</li>
-				<li>
-					<details ontoggle="const a = this.querySelector('audio'); this.open ? a.play() : a.pause();">
-						<summary>Producing music with FL studio</summary>
-						<audio controls preload="none" src="img/KMU%20XanderS%20(WAV).wav">Your browser can't play this audio.</audio>
-					</details>
-				</li>
-				<li>Working out</li>
-				<li>Kitesurfing</li>
-				<li>Kickboxing</li>
-				<li>Playing Minecraft or Overwatch with friends</li>
-				<li>Building or tearing apart computers</li>
-				<li>Drumming</li>
-				<li>Learning and improving</li>
-				<li>Collecting physical media (CD's, LP's, Games)</li>
-				<li><a href="img/bike.jpg" target="_blank" rel="noopener">Riding my bike</a></li>
-			</ul>
-			<h2>Find me online</h2>
-			<ul>
-				<li><a href="https://github.com/Studendtx" target="_blank" rel="noopener">GitHub</a></li>
-				<li><a href="https://www.instagram.com/xanderschroevers/" target="_blank" rel="noopener">Instagram</a></li>
-			</ul>
-		</main>
-		<aside class="external">
-			<h2>External</h2>
-			<ul>
-				<li><a href="https://hz.reader.docfield.com/0eb02280-92aa-47e8-9714-e3f866708e61" target="_blank" rel="noopener">HZ ICT Course and Examination Regulations (CER)</a></li>
-				<li><a href="https://hz.reader.docfield.com/80871c39-9285-4b38-85e4-78a0efbc2461" target="_blank" rel="noopener">Implementation Regulations (IR) HZ ICT</a></li>
-				<li><a href="https://learn.hz.nl/course/view.php?id=30702" target="_blank" rel="noopener">HZ Learn</a></li>
-				<li><a href="https://hz.osiris-student.nl" target="_blank" rel="noopener">My study progress (Osiris)</a></li>
-				<li><a href="https://github.com/HZ-HBO-ICT" target="_blank" rel="noopener">HZ HBO-ICT on GitHub</a></li>
-			</ul>
-		</aside>
-	</div>
+	<div class="sc-grain" aria-hidden="true"></div>
+	<header class="site-nav">
+		<a class="site-nav__brand" href="index.html">Xander Schroevers</a>
+		<nav aria-label="Site">
+			<a href="dashboard.html">Dashboard</a>
+			<a href="why-it.html">Why ICT?</a>
+			<a href="blog.html">Blog</a>
+			<a href="about.html" aria-current="page">About me</a>
+		</nav>
+	</header>
+	<main>
+		<header class="page-head" data-sc-act="flow">
+			<div class="page-head__disc" aria-hidden="true"></div>
+			<div class="wrap">
+				<p class="page-head__cat">About me · Side A</p>
+				<h1>Who am I?</h1>
+				<p class="page-head__lede">A 19-year-old from Arnemuiden who has been taking technology apart since he was 9.</p>
+			</div>
+		</header>
+		<div class="page wrap">
+			<div class="about-grid">
+				<div class="prose" data-sc-in data-sc-stagger="60">
+					<h2>About me</h2>
+					<p>I am a 19-year-old guy from Arnemuiden. I've always had an affinity for technology, starting with iPads, tablets and drones when I was about 9. Since my mom didn't want to buy Minecraft Pocket Edition for me, I had to find a different way to obtain the game. This led me down a rabbit hole of APK's, questionable websites, and a lot of viruses. I persisted, and managed to install the game for free. I definitely gave my tablet a couple of viruses, but to younger me, that was not as important as Minecraft.</p>
+					<h2>Hobbies</h2>
+					<ul class="hobbies">
+						<li>Watching movies or youtube</li>
+						<li><a href="img/diving.jpg" target="_blank" rel="noopener">Scuba Diving</a></li>
+						<li>Playing the electrical and classical guitar</li>
+						<li>
+							<details ontoggle="const a = this.querySelector('audio'); this.open ? a.play() : a.pause();">
+								<summary>Producing music with FL studio</summary>
+								<audio controls preload="none" src="img/KMU%20XanderS%20(WAV).wav">Your browser can't play this audio.</audio>
+							</details>
+						</li>
+						<li>Working out</li>
+						<li>Kitesurfing</li>
+						<li>Kickboxing</li>
+						<li>Playing Minecraft or Overwatch with friends</li>
+						<li>Building or tearing apart computers</li>
+						<li>Drumming</li>
+						<li>Learning and improving</li>
+						<li>Collecting physical media (CD's, LP's, Games)</li>
+						<li><a href="img/bike.jpg" target="_blank" rel="noopener">Riding my bike</a></li>
+					</ul>
+					<h2>Find me online</h2>
+					<ul>
+						<li><a href="https://github.com/Studendtx" target="_blank" rel="noopener">GitHub</a></li>
+						<li><a href="https://www.instagram.com/xanderschroevers/" target="_blank" rel="noopener">Instagram</a></li>
+					</ul>
+				</div>
+				<figure data-sc-in>
+					<img src="img/summer-job.webp" width="1000" height="1334" alt="Photo of Xander and a friend during their summer job">
+					<figcaption>Me (Left) and my friend (Right) at our summer job (picture was taken by management for the company website).</figcaption>
+				</figure>
+			</div>
+			<div class="photos">
+				<figure data-sc-in>
+					<img src="img/diving.webp" width="1400" height="1226" alt="Xander scuba diving near the sea floor, filming a large grouper swimming past" loading="lazy">
+					<figcaption>Scuba diving.</figcaption>
+				</figure>
+				<figure data-sc-in>
+					<img src="img/bike.webp" width="900" height="1200" alt="Xander sitting on his blue Yamaha motorbike in a street" loading="lazy">
+					<figcaption>Riding my bike.</figcaption>
+				</figure>
+			</div>
+		</div>
+	</main>
+	<footer class="site-foot">
+		<div class="wrap">
+			<div class="site-foot__cols">
+				<div>
+					<h2>On this site</h2>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="dashboard.html">Dashboard</a></li>
+						<li><a href="why-it.html">Why did I choose ICT?</a></li>
+						<li><a href="blog.html">Blog</a></li>
+						<li><a href="about.html">About me</a></li>
+					</ul>
+				</div>
+				<div>
+					<h2>Online</h2>
+					<ul>
+						<li><a href="https://github.com/Studendtx" target="_blank" rel="noopener">GitHub</a></li>
+						<li><a href="https://www.instagram.com/xanderschroevers/" target="_blank" rel="noopener">Instagram</a></li>
+					</ul>
+				</div>
+				<div>
+					<h2>HZ</h2>
+					<ul>
+						<li><a href="https://hz.reader.docfield.com/0eb02280-92aa-47e8-9714-e3f866708e61" target="_blank" rel="noopener">HZ ICT Course and Examination Regulations (CER)</a></li>
+						<li><a href="https://hz.reader.docfield.com/80871c39-9285-4b38-85e4-78a0efbc2461" target="_blank" rel="noopener">Implementation Regulations (IR) HZ ICT</a></li>
+						<li><a href="https://learn.hz.nl/course/view.php?id=30702" target="_blank" rel="noopener">HZ Learn</a></li>
+						<li><a href="https://hz.osiris-student.nl" target="_blank" rel="noopener">My study progress (Osiris)</a></li>
+						<li><a href="https://github.com/HZ-HBO-ICT" target="_blank" rel="noopener">HZ HBO-ICT on GitHub</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="site-foot__base">
+				<img src="img/hz-logo.svg" width="140" height="36" alt="HZ University of Applied Sciences logo">
+				<p>Xander Schroevers · HBO-ICT, HZ University of Applied Sciences · 2026</p>
+			</div>
+		</div>
+	</footer>
+	<script src="scrollcraft.js"></script>
+	<script>ScrollCraft.mount(document.body);</script>
 </body>
 </html>
